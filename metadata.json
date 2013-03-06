@@ -1,0 +1,9 @@
+{
+  "name": "DropPod/ruby",
+  "version": "0.0.0",
+  "summary": "A framework for managing Ruby environments",
+  "source": "https://github.com/DropPod/ruby.git",
+  "author": "Pieter van de Bruggen",
+  "license": "MIT",
+  "dependencies": []
+}
