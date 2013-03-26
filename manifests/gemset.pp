@@ -1,4 +1,4 @@
-define ruby::gemset($ruby, $bundler=true) {
+define ruby::gemset($ruby, $bundler = true) {
   include Ruby
 
   $awk = "/usr/bin/awk '{ if (\$0 ~ /^[^ ]/) ver = \$1; else print ver \$1 }'"
@@ -9,7 +9,7 @@ define ruby::gemset($ruby, $bundler=true) {
     require     => [Package['rbenv'], Package['rbenv-gemset']],
   }
 
-  Ruby::Gemset[$name] -> Ruby::Gem <| ruby == $ruby and gemset == $name |>
+  Exec["Creating Ruby Gemset ${ruby}@${name}"] -> Ruby::Gem <| ruby == $ruby and gemset == $name |>
 
   if ($bundler) {
     ruby::gem { "bundler": ruby => $ruby, gemset => $name }
