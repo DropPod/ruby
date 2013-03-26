@@ -10,7 +10,7 @@ define ruby::bundle($gemfile = $title, $gemset, $ruby) {
   $env = "cd $(/usr/bin/mktemp -dt tmp); echo ${gemset} > .rbenv-gemsets"
   exec { "Install gems from ${gemfile} into gemset ${ruby}@${gemset}":
     command     => "${env}; rbenv exec bundle install --gemfile '${gemfile}'",
-    unless      => "${env}; rbenv exec bundle check --gemfile '${gemfile}'",
+    unless      => "${env}; rbenv rehash; rbenv exec bundle check --gemfile '${gemfile}'",
     path        => "/usr/local/bin:/usr/bin:/bin",
     environment => ["RBENV_VERSION=${ruby}"],
     require     => [Ruby::Gem['bundler']],
