@@ -12,7 +12,7 @@ define ruby::bundle($gemfile = $title, $gemset, $ruby) {
     command     => "${env}; rbenv exec bundle install --gemfile '${gemfile}'",
     unless      => "${env}; rbenv rehash; rbenv exec bundle check --gemfile '${gemfile}'",
     path        => "/usr/local/bin:/usr/bin:/bin",
-    environment => ["RBENV_VERSION=${ruby}"],
+    environment => ['RBENV_ROOT=/usr/local/var/rbenv', "RBENV_VERSION=${ruby}"],
     require     => [Ruby::Gem['bundler']],
     notify      => [Exec['rbenv rehash']],
   }
