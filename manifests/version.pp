@@ -10,5 +10,5 @@ define ruby::version($version = $title) {
     require     => [Package['rbenv'], Package['ruby-build']],
   }
 
-  Ruby::Version[$name] -> Ruby::Gemset <| version == $version |>
+  Ruby::Version[$name] -> Ruby::Gemset <| ruby == $version |>
 }
