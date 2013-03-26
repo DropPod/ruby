@@ -22,4 +22,9 @@ class ruby {
   rcfile { 'rbenv':
     source => "puppet:///modules/ruby/rbenv.sh",
   }
+
+  exec { 'rbenv rehash':
+    path        => "/usr/local/bin:/usr/bin:/bin",
+    refreshonly => true,
+  }
 }

@@ -10,8 +10,4 @@ define ruby::gem($ruby, $gemset) {
     require     => [Package['rbenv'], Package['rbenv-gemset']],
     notify      => [Exec['rbenv rehash']],
   }
-
-  if !defined(Exec['rbenv rehash']) {
-    exec { 'rbenv rehash': path => "/usr/local/bin:/usr/bin:/bin", refreshonly => true }
-  }
 }
