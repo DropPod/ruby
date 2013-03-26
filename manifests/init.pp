@@ -25,7 +25,7 @@ class ruby {
 
   exec { 'rbenv rehash':
     path        => "/usr/local/bin:/usr/bin:/bin",
-    env         => ['RBENV_ROOT=/usr/local/var/rbenv'],
+    environment => ['RBENV_ROOT=/usr/local/var/rbenv'],
     refreshonly => true,
   }
 }
