@@ -1,2 +1,2 @@
 export RBENV_ROOT=/usr/local/var/rbenv
-which -s rbenv && eval "$(rbenv init -)"
+/usr/bin/which -s rbenv && eval "$(rbenv init -)"
